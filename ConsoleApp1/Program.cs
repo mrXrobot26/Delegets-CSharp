@@ -20,14 +20,37 @@
                 new Employee() { Id = 12, Name = "Amr", gender = "m", TotalSale = 11100m },
             };
 
+            //method
+            bool IsTotalSaleBetween(Employee e)
+            {
+                return e.TotalSale > 40000 && e.TotalSale < 70000;
+            }
+
+            // method
+            bool bigthan40000andlessthan70000(Employee e) => e.TotalSale > 40000 && e.TotalSale < 70000;
 
             var report = new Report();
-            report.EmployeeProcessBigThanOrEqual60000(EmpLst);
-            report.EmployeeProcessBigThan30000AndLessThan60000(EmpLst);
-            report.EmployeeProcessLessThan30000(EmpLst);
+            report.EmployeeProcess(EmpLst, "big than 40000 and less than 70000",  IsTotalSaleBetween);
+            report.EmployeeProcess(EmpLst, "big than 40000 and less than 70000", bigthan40000andlessthan70000);
+            report.EmployeeProcess(EmpLst, "big than 40000 and less than 70000", delegate (Employee e) { return e.TotalSale > 40000 && e.TotalSale < 70000; }) ;
+            report.EmployeeProcess(EmpLst, "big than 40000 and less than 70000", (Employee e) => e.TotalSale > 40000 && e.TotalSale < 70000);
+            report.EmployeeProcess(EmpLst, "big than 40000 and less than 70000", e => e.TotalSale > 40000 && e.TotalSale < 70000);
+
+
+
+
+           
+
+            //report.EmployeeProcessBigThanOrEqual60000(EmpLst);
+            //report.EmployeeProcessBigThan30000AndLessThan60000(EmpLst);
+            //report.EmployeeProcessLessThan30000(EmpLst);
+
 
 
 
         }
+       // public static bool bigthan40000andlessthan70000(Employee e) => e.TotalSale > 40000 && e.TotalSale < 70000;
+
+
     }
 }
